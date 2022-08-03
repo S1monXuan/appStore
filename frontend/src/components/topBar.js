@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import './topBar.css'
 
 const TopBar = ({loginName}) => {
-    const [loginStatus, setLoginStatus] = useState(false)
+    const [loginStatus, setLoginStatus] = useState(true)
+    // set login status true if account login, false if not login
+
     const [loginDetailDisplay, setLoginDetailDisplay] = useState(false)
+    // on click for get detail page for login settings
 
     return (
         <div className='top-bar-div'>
