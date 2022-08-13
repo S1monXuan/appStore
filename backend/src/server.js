@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 
 const info = {
     'learn-react':{
@@ -105,6 +105,61 @@ app.post('/withDB/type/:name', async(req, res) => {
         const allType = await db.collection('typeList').find().toArray();
         res.status(200).json(allType);
     }, res);
+})
+
+app.get('/index', async(req, res) => {
+    withDB(async (db) => {
+        const recommend = await db.collection('appList').find().toArray();
+        const shopList = await db.collection('appList').find({type: "shopping"}).toArray();
+        res.status(200).json({rec: recommend, shop: shopList});
+    }, res)
+})
+
+// get category of type
+app.get('/type', async(req, res) => {
+    withDB(async (db) => {
+        const envTar = req.params.env;
+        const typeList = await db.collection('typeList').find().toArray();
+        res.status(200).json(typeList);        
+    }, res)
+})
+
+// // get app based on env(ios, android, etc)
+// app.get('/', async(res) => {
+//     withDB(async (db) => {
+//         const envTar = "IOS";
+//         const typeList = await db.collection('appList').find({env: envTar}).toArray();
+//         res.status(200).json({envTar, typeList});        
+//     }, res)
+// })
+
+// get app based on env(ios, android, etc)
+app.get('/category/:env', async(req, res) => {
+    withDB(async (db) => {
+        const envTar = req.params.env;
+        const typeList = await db.collection('appList').find({env: envTar}).toArray();
+        res.status(200).json(typeList);        
+    }, res)
+})
+
+// get app based on env(ios, android, etc) and type(game, shopping, etc)
+app.get('/category/:env/:type', async(req, res) => {
+    withDB(async (db) => {
+        const envTar = req.params.env;
+        const typeTar = req.params.type;
+        const typeList = await db.collection('appList').find({env: envTar, type: typeTar}).toArray();
+        res.status(200).json(typeList);        
+    }, res)
+})
+
+// get app based on id
+app.get('/details/:id', async(req, res) => {
+    withDB(async (db) => {
+        const idt = req.params.id;
+        const monidT = new ObjectId(idt);
+        const appTar = await db.collection('appList').findOne({_id: monidT});
+        res.status(200).json(appTar);         
+    }, res)
 })
 
 app.listen(8000, () => console.log('Listening on port 8000'));

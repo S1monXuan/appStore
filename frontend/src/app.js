@@ -1,27 +1,29 @@
-import React from "react";
-
+import React, {Component} from "react";
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+} from 'react-router-dom';
+import HomePage from "./pages/HomePage";
 import TopBar from "./components/topBar";
-import SideBar from "./components/indexPage/sideBar";
-import AppItems from "./components/indexPage/AppItems";
-import BasicInfo from "./components/detailPage/basicInfo";
-import DetailPage from "./components/detailPage/DetailPage";
-import GeneralInfo from "./components/userPage/GeneralInfo";
-import UserSideBar from "./components/userPage/UserSideBar";
+import NotFoundPage from "./pages/NotFoundPage";
 
-const App = () => (
-    <div className= "App">
-        {/* <p>test</p>
-        <TopBar loginName="null"/> */}
-        {/* <div> sideBar </div>
-        <SideBar /> */}
-        {/* <div>appItems</div>
-        <AppItems /> */}
-        {/* <BasicInfo /> */}
-        {/* <DetailPage /> */}
-        <UserSideBar />
-        <GeneralInfo />
-        
-    </div>
-);
+class App extends Component{
+    render() {
+        return(
+            <Router>
+                <div className="App">
+                <TopBar />
+                <div id='page-body'>
+                    <Routes>
+                        <Route path="/index" element={<HomePage />} />
+                        {/* <Route path="*" element={<NotFoundPage />} /> */}
+                    </Routes>
+                </div>
+                </div>
+            </Router>
+        )
+    };
+}
 
 export default App;
