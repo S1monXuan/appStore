@@ -3,7 +3,7 @@ import './AppItems.css';
 import AppItem from "./AppItem";
 
 const AppItems = ({env, type}) => {
-    
+    var variables = window.location.search;
     // const appLists = [{
     //     "icon": "icon",
     //     "name": "testApp",
@@ -20,9 +20,9 @@ const AppItems = ({env, type}) => {
         const fetchData = async () => {
             let res = [];
             if( type ){
-                res = await fetch(`${type}`);
+                res = await fetch(`${type}/${variables}`);
             } else {
-                res = await fetch(`${env}`);
+                res = await fetch(`${env}/${variables}`);
             }
             // console.log(res);
             const body = await res.json();

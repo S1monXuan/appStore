@@ -8,9 +8,25 @@ import HomePage from "./pages/HomePage";
 //import TopBar from "./components/topBar";
 import NotFoundPage from "./pages/NotFoundPage";
 import DetailPage from "./pages/DetailPage";
-import UserPage from "./pages/UserPage";
 import UserIndex from "./pages/UserPages/UserIndex";
+import UserPayment from "./pages/UserPages/UserPayment";
+import UserPaymentAdd from "./pages/UserPages/UserPaymentAdd";
+import UserPurchase from "./pages/UserPages/UserPurchase";
+import PasswordUpdate from "./pages/UserPages/PasswordUpdate";
+import AccountInfoUpdate from "./pages/UserPages/AccountInfoUpdate";
+// import UserPage from "./pages/UserPage";
 
+import LoginPage from "./pages/Login/LoginPage";
+import SignUpPage from "./pages/Login/SignUpPage";
+
+import { PrivateRoute } from "./pages/Login/auth/PrivateRoute";
+import { PleaseVerifyEmailPage } from "./pages/Login/PleaseVerifyEmailPages";
+import { EmailVerificationLandingPage } from "./pages/Login/EmailVerificationLandingPage";
+import { ForgotPasswordPage } from "./pages/Login/ForgotPasswordPage";
+import { PasswordResetLandingPage } from "./pages/Login/PasswordResetLandingPage";
+import { UserAccountDeleteConfirm } from "./pages/UserPages/UserAccountDeleteConfirm";
+import { UploadNewApp } from "./pages/UserPages/UploadNewApp";
+import { UploadAppFile } from "./pages/UserPages/UploadAppFile";
 class App extends Component{
     render() {
         return(
@@ -21,7 +37,9 @@ class App extends Component{
                 </div>
                 <div id='page-body'>
                     <Routes>
-                        {/* <Route path="/" to="/category/IOS"element={<HomePage/>} /> */}
+                        <Route path="/"  element={<PrivateRoute/>} >
+                            <Route path="/" to="/category/IOS" element={<HomePage/>}/>
+                            </ Route>
                         {/* for category and detail page */}
                         <Route path="/category/:env" element={<HomePage />} />
                         <Route path="/category/:env/:type" element={<HomePage />} />
@@ -29,7 +47,24 @@ class App extends Component{
                         {/* <Route path="/user/:name" element={<UserPage />} /> */}
 
                         {/* for userpage */}
-                        <Route path="/user/:id/index" element={<UserIndex />} />
+                        <Route path="/user/:id" element={<UserIndex />} />
+                        <Route path="/user/:id/payment" element={<UserPayment />} />
+                        <Route path="/user/:id/payment/add" element={<UserPaymentAdd />} />
+                        <Route path="/user/:id/purchase" element={<UserPurchase />} />
+                        <Route path="/user/:id/passwordUpdate" element={<PasswordUpdate />} />
+                        <Route path="/user/:id/accountinfoUpdate" element={<AccountInfoUpdate />} />
+                        <Route path="/user/:id/deleteConfirm" element={<UserAccountDeleteConfirm />} />
+                        <Route path="/user/:id/createApp" element={<UploadNewApp />} />
+                        <Route path="/user/:id/createApp/:appId" element={<UploadAppFile />} />
+
+                        {/* for login, signup, reset password */}
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/signup" element={<SignUpPage />} /> 
+                        <Route path="/please-verify" element={<PleaseVerifyEmailPage />} /> 
+                        <Route path="/verify-email/:verificationString" element={<EmailVerificationLandingPage />} /> 
+                        <Route path="/forgot-password" element={<ForgotPasswordPage />} /> 
+                        <Route path="/reset-password/:passwordResetCode" element={<PasswordResetLandingPage />} />
+
 
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>

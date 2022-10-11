@@ -11,6 +11,9 @@ const BasicInfo = ({app}) => {
                 <div className="details-basic-name">
                     <p>{app.name}</p>
                 </div>
+                <div className="details-basic-price">
+                    <p>Price: {app.price}</p>
+                </div>
             </div>
             <div className="details-basic-info-buttom">
                 <div className="details-avg-score">

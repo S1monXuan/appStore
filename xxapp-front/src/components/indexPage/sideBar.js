@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './sideBar.css'
 
@@ -6,8 +6,15 @@ const SideBar = ({types = ["IOS", "Android"], categories = ["recommend", "news",
     const [searchName, setSearchName] = useState('');
     const [searchOutput, setSearchOutput] = useState('searchOutput');
     const [typeNow, setTypeNow] = useState('IOS');
+    const [searchVal, setSearchVal] = useState('');
 
-    
+    const putValIntoHtml = () => {
+        var params = new URLSearchParams();
+        params.append("search", searchName);
+        
+        window.location.href = window.location.href.split('?')[0] +"?" + params.toString();
+    }
+
 
     return(
         <div className="sideBar">
@@ -23,6 +30,7 @@ const SideBar = ({types = ["IOS", "Android"], categories = ["recommend", "news",
                     onClick={() => {
                         setSearchOutput(searchName);
                         setSearchName('');
+                        putValIntoHtml();
                         }
                     }
                 >
