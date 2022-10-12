@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 
 
@@ -12,6 +12,10 @@ export const UploadAppFile = () => {
     
     const [appInfo, setAppInfo] = useState({});
 
+    const [newapp, setNewapp] = useState('');
+    const [progress, setProgress] = useState(0);
+    const el = useRef();
+
     useEffect(() => {
         const getAppInfo = async () => {
             const getinfo = await axios.get(`/user/${userId}/createApp/${appId}`);
@@ -20,9 +24,25 @@ export const UploadAppFile = () => {
         getAppInfo();
     }, [])
 
-    const uploadApp = async () => {
-        
+    const handleChange = (e) => {
+        setProgress(0);
+        const file = e.target.files[0];
+        console.log(file);
+        setNewapp(file);
     }
+
+    const uploadFile = () => {
+        const formData = new FormData();
+        formData.append('uploadFiles', newapp); // appending file
+        axios.post(`/user/${userId}/createApp/${appId}`, formData, {
+            onUploadProgress: (ProgressEvent) => {
+                let progress = Math.round(
+                ProgressEvent.loaded / ProgressEvent.total * 100) + '%';
+                setProgress(progress);
+            }
+        }).then(res => {
+            console.log(res);
+        }).catch(err => console.log(err))}   
 
     return(
         <div>
@@ -54,9 +74,14 @@ export const UploadAppFile = () => {
             </div>
             </div>
 
+            <input onChange={handleChange} type='file'>
+            </input>
             <button
-                onClick={() => uploadApp()}
-            >Upload your Application</button>
+                disabled={!newapp}
+                onClick={uploadFile}
+            >
+                Submit
+            </button>
         </div>
     )
 }

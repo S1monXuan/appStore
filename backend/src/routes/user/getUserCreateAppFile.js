@@ -16,6 +16,7 @@ export const getUserCreateAppFile = {
     
             const updateduserDetail = await db.collection('appList').findOne({_id: appId});
             // console.log(updateduserDetail)
+
             res.status(200).json(updateduserDetail);
 
             // client.close();

@@ -3,6 +3,8 @@ import bodyParser from 'body-parser';
 // import { MongoClient, ObjectId } from 'mongodb';
 import { routes } from './routes';
 import { initializeDbConnection } from './db';
+import fs from 'fs';
+import formidable from 'formidable';
 
 const PORT = 8080 || process.env.PORT;
 
@@ -37,6 +39,40 @@ initializeDbConnection()
             console.log(`Server is listening on port ${PORT}`);
         });
     });
+
+
+app.post("/user/:id/createApp/:appId", (req, res, next) => {
+    try{
+        // upload folder into app
+        const appIdDir = req.params.appId;
+        // console.log(appIdDir);
+        const foldername = './files/' + appIdDir;
+        // console.log(foldername);
+        if(!fs.existsSync(foldername)){
+            fs.mkdirSync(foldername);
+        }
+        //upload app/ file into folder
+        const uploadFiles =  req.body;
+        console.log(req.body);
+        const form = new formidable.IncomingForm();
+        
+        form.parse(req, function(err, fields, files){
+            // console.log(files);
+            var oldPath = files.uploadFiles.filepath;
+            var newPath = foldername +'/' + files.uploadFiles.originalFilename;
+            console.log(newPath);
+            var rawData = fs.readFileSync(oldPath);
+            fs.writeFile(newPath, rawData, function(err){
+                if(err) console.log(err);
+            })
+        }) 
+        res.status(200).json("success uploaded");
+        
+    } catch (error) {
+        res.status(500).json({ message: 'Error coonection to db', error});
+    }
+})
+
 
 // app.get('/hello', (req, res) => res.send('Hello'));
 // app.post('/hello/:name', (req, res) => res.send(`hello ${req.params.name}`));

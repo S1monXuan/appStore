@@ -24,6 +24,7 @@ import { getDeleteUserAccount } from "./user/getDeleteUserAccount";
 import { getUploadAppType } from "./getUploadAppType";
 import { postCreateApp } from "./user/postUserCreateApp";
 import { getUserCreateAppFile } from "./user/getUserCreateAppFile";
+// import { postUserCreateAppFile } from "./user/postUserCreateAppFile";
 export const routes = [
     SignUpPage,
     LoginRoute,
@@ -51,6 +52,7 @@ export const routes = [
     getUploadAppType,
     postCreateApp,
     getUserCreateAppFile,
+    // postUserCreateAppFile,
     
     GetDetails,
     GetListBasedOnSearchRoute,
