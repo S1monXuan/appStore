@@ -1,11 +1,12 @@
 import { MongoClient } from 'mongodb';
-
+import mongoose from 'mongoose';
 let client;
-
+const url = process.env.MONGO_CLIENT;
+console.log(url);
 export const initializeDbConnection = async () => {
-    client = await MongoClient.connect('mongodb://127.0.0.1:27017', {
+    client = await MongoClient.connect(url, {
         useNewUrlParser: true,
-        useUnifiedTopology: true,
+        useUnifiedTopology: true 
     });
 }
 

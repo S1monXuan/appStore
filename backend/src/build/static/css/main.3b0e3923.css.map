@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.3b0e3923.css","mappings":"AAAA,oBACI,qBAAuB,CACvB,UACJ","sources":["components/indexPage/AppItem.css"],"sourcesContent":[".mainindex-app-item{\r\n    border: 2px black solid;\r\n    margin: 1px;\r\n}"],"names":[],"sourceRoot":""}

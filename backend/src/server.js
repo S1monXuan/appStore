@@ -5,9 +5,9 @@ import { routes } from './routes';
 import { initializeDbConnection } from './db';
 import fs from 'fs';
 import formidable from 'formidable';
+import path from 'path';
 
 const PORT = 8080 || process.env.PORT;
-
 // const info = {
 //     'learn-react':{
 //         upvotes: 0,
@@ -25,6 +25,8 @@ const PORT = 8080 || process.env.PORT;
 
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, '/build')));
 
 app.use(express.json()).use(bodyParser.json());
 // app.use(bodyParser.json());
@@ -71,6 +73,10 @@ app.post("/user/:id/createApp/:appId", (req, res, next) => {
     } catch (error) {
         res.status(500).json({ message: 'Error coonection to db', error});
     }
+})
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/build/index.html'))
 })
 
 
