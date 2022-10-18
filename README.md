@@ -2,7 +2,7 @@
 It is a full stack web app application using react and node js. It use mongodb atlas as database. Sendgrid is used to send message.
 
 It is been deployed on Microsoft Azure
-<a href="https://xinmai-webapp.azurewebsites.net"> Link to Xinmai Webapp </a>
+<a href="https://xx-webapp.azurewebsites.net/"> Link to Xinmai Webapp </a>
 
 # How it works
     To use the application, you must register an account.
