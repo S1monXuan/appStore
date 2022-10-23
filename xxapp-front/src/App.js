@@ -27,6 +27,8 @@ import { PasswordResetLandingPage } from "./pages/Login/PasswordResetLandingPage
 import { UserAccountDeleteConfirm } from "./pages/UserPages/UserAccountDeleteConfirm";
 import { UploadNewApp } from "./pages/UserPages/UploadNewApp";
 import { UploadAppFile } from "./pages/UserPages/UploadAppFile";
+
+import './App.css'
 class App extends Component{
     render() {
         return(
@@ -38,7 +40,7 @@ class App extends Component{
                 <div id='page-body'>
                     <Routes>
                         <Route path="/"  element={<PrivateRoute/>} >
-                            <Route path="/" to="/category/IOS" element={<HomePage/>}/>
+                            <Route path="/" element={<HomePage/>}/>
                             </ Route>
                         {/* for category and detail page */}
                         <Route path="/category/:env" element={<HomePage />} />

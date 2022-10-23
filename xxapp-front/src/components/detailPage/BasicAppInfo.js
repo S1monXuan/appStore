@@ -19,14 +19,14 @@ const BasicAppInfo = ({app}) => {
                 <h3>version:</h3>
                 <p>{app.version}</p>
             </div>
-            <div className="details-app-info-updated">
+            {/* <div className="details-app-info-updated">
                 <h3>updated at:</h3>
                 <p>{app.updateddate}</p>
-            </div>
-            <div className="details-app-info-size">
+            </div> */}
+            {/* <div className="details-app-info-size">
                 <h3>size:</h3>
                 <p>{app.size}</p>
-            </div>
+            </div> */}
             <div className="details-app-info-language">
                 <h3>language:</h3>
                 {/* <p>{app.language}</p> */}

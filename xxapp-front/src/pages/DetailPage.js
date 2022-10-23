@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom';
 import TopBar from '../components/topBar';
 import axios from 'axios';
 
+import './DetailPage.css';
+
 const DetailPage = () => {
     const params = useParams();
     const [appId, setAppId] = useState(params.id);
@@ -49,23 +51,30 @@ const DetailPage = () => {
     return (
     <div className="details-page">
         <TopBar />
-        <p>details page</p>
-        {/* {
-            app.map((appl) => 
-                console.log(appl),
-                <BasicInfo app = {app} key={1}/>,
-                <BasicOverview app = {app} key={1}/>,
-                <BasicAppInfo app = {app} key={1}/>
-            )
-        } */}
-        <div className='conduct-operations'>
-            <button> purchase </button>
-            <button onClick={() => downloadClick()}> download </button>
+        <div className='btn-choose'>
+            <h1>{appDetail.name}</h1>
+            {/* {
+                app.map((appl) => 
+                    console.log(appl),
+                    <BasicInfo app = {app} key={1}/>,
+                    <BasicOverview app = {app} key={1}/>,
+                    <BasicAppInfo app = {app} key={1}/>
+                )
+            } */}
+            <div className='conduct-operations'>
+                {/* <button> purchase </button> */}
+                <button className='download-btn' onClick={() => downloadClick()}> download </button>
+            </div>
         </div>
-        <BasicInfo app={appDetail}/>   
-        <BasicOverview app={appDetail}/>
-        <BasicAppInfo app={appDetail}/>
-        
+        <div className='basic-div'>
+            <div className='basic-div-left'>
+                <BasicInfo app={appDetail}/>   
+                <BasicOverview app={appDetail}/>
+            </div>
+            <div className='basic-div-right'>
+                <BasicAppInfo app={appDetail}/>
+            </div>
+        </div>
     </div>
 )}
 

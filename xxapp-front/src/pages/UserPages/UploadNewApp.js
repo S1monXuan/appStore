@@ -2,6 +2,10 @@ import axios from "axios";
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import UserSideBar from "../../components/userPage/UserSideBar";
+import TopBar from "../../components/topBar";
+
+import "./UploadNewApp.css";
 
 export const UploadNewApp = () => {
 
@@ -57,11 +61,17 @@ export const UploadNewApp = () => {
         });
         const { appId } = response.data;
         // console.log(appId)
-        navigate(`/user/${userId}/create/${appId}`)
+        navigate(`/user/${userId}/createApp/${appId}`)
     }
 
     return(
-        <div>
+        <>
+        <TopBar />
+        <div className="userPage">
+        <div className="user-sideBar-container">
+            <UserSideBar />
+        </div>
+        <div className="userInfo-main">
             <h1>Upload New App( Or File )</h1>
             <label>
                 Name:
@@ -79,22 +89,22 @@ export const UploadNewApp = () => {
                 description:
                 <input type='text' value={description} onChange={(event) => setDescription(event.target.value)}/>
             </label>
-            <label>
-                Env:
-                <input type='radio' value='IOS' onChange={() => setEnv('IOS')} checked={iosChecked} onClick={()=> setIosChecked(!iosChecked)}/>
-                IOS
-                <input type='radio' value='Android' onChange={() => setEnv('Android')} checked={andChecked} onClick={()=> setAndChecked(!andChecked)}/>
-                Android                
+            <label className="type-select">
+                Env: <br />
+                IOS <input type='radio' value='IOS' onChange={() => setEnv('IOS')} checked={iosChecked} onClick={()=> setIosChecked(!iosChecked)}/>
+                Android <input type='radio' value='Android' onChange={() => setEnv('Android')} checked={andChecked} onClick={()=> setAndChecked(!andChecked)}/>                
             </label>
             <label>
                 SelectType:
                 <div>You selected: {type}</div>
+                <ol>
                 {
                     typeAll.map(
                         (element) => 
-                        <div key={element} onClick={() => setType(element)}> {element} </div>
+                        <li key={element} onClick={() => setType(element)}> {element} </li>
                     )
                 }
+                </ol>
             </label>
             <button
                 onClick={() => uploadApp()}
@@ -102,5 +112,7 @@ export const UploadNewApp = () => {
                 Upload App
             </button>
         </div>
+        </div>
+        </>
     )
 }

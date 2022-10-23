@@ -1,0 +1,5 @@
+.content-container{
+    height: auto;
+    min-height: 500px;
+    border: solid black 1;
+}

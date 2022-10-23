@@ -45,11 +45,8 @@ initializeDbConnection()
 
 app.post("/user/:id/createApp/:appId", (req, res, next) => {
     try{
-        // upload folder into app
         const appIdDir = req.params.appId;
-        // console.log(appIdDir);
         const foldername = './files/' + appIdDir;
-        // console.log(foldername);
         if(!fs.existsSync(foldername)){
             fs.mkdirSync(foldername);
         }
@@ -59,7 +56,6 @@ app.post("/user/:id/createApp/:appId", (req, res, next) => {
         const form = new formidable.IncomingForm();
         
         form.parse(req, function(err, fields, files){
-            // console.log(files);
             var oldPath = files.uploadFiles.filepath;
             var newPath = foldername +'/' + files.uploadFiles.originalFilename;
             console.log(newPath);

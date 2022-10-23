@@ -1,0 +1,30 @@
+.btn-choose{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.btn-choose h1{
+    text-align: left;
+}
+
+.download-btn{
+    width: 100px;
+    background-color: green;
+}
+
+.basic-div-left, .basic-div-right{
+    position: relative;
+    display: inline-block;
+}
+
+.basic-div-left{
+    text-align: left;
+    vertical-align: top;
+    width: 50%;
+}
+
+.basic-div-right{
+    text-align: left;
+    vertical-align: top;
+    width: 10%;
+}

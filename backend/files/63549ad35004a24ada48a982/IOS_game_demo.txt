@@ -1,0 +1,1 @@
+This is the demo of ios game app. It contains a txt file. Please download it if you want

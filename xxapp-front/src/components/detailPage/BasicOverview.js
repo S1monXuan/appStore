@@ -3,7 +3,7 @@ import React from "react";
 const BasicOverview = ({app}) => {
     return(
         <div className="details-app-description">
-            <h2>Overview:</h2>
+            <h2>About this app:</h2>
             <p>{app.description}</p>
         </div>
 

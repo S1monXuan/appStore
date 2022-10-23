@@ -1,0 +1,27 @@
+.user-sideBar-container, .userInfo-main{
+    position: relative;
+    display: inline-block;
+}
+
+.userPage{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.user-sideBar-container{
+    width: 15%;
+    height: auto;
+    vertical-align: top;
+    text-align: left;
+}
+
+.user-sideBar-container button{
+    width: 150px;
+}
+.userInfo-main{
+    width: 80%;
+    height: auto;
+    text-align: left;
+    margin-left: 5%;
+    text-align: left;
+}

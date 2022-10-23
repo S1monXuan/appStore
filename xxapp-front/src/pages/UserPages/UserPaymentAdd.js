@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import UserSideBar from '../../components/userPage/UserSideBar';
 import axios from "axios";
+import TopBar from "../../components/topBar";
+
 
 const UserPaymentAdd = () => {
     const navigate = useNavigate();
@@ -29,15 +31,22 @@ const UserPaymentAdd = () => {
 
     return(
         <>
-        <UserSideBar />
-        <h1>Balance UPDATE</h1>
-        <label>
-            Money you want to add:
-            <input type='text' value={amount} onChange={(event) => setAmount(event.target.value)}/>
-        </label>
-        <button onClick={() => {UpdateBalanceInfo()}}>
-            Update Account Info
-        </button>
+        <TopBar />
+        <div className="userPage">
+        <div className="user-sideBar-container">
+            <UserSideBar />
+        </div>
+        <div className="userInfo-main">
+            <h1>Balance UPDATE</h1>
+            <label>
+                Money you want to add:
+                <input type='text' value={amount} onChange={(event) => setAmount(event.target.value)}/>
+            </label>
+            <button onClick={() => {UpdateBalanceInfo()}}>
+                Add money
+            </button>
+            </div>
+        </div>
         </>
     )
 }

@@ -9,9 +9,9 @@ export const GetListBasedOnSearchRoute = {
             const db = getDbConnection('xx-webapp');
     
             const searchName = req.params.name;
-            console.log(searchName);
+            // console.log(searchName);
             const appAll = await db.collection('appList').find({"name": {"$regex": searchName}}).toArray();
-            console.log(appAll);
+            // console.log(appAll);
             res.status(200).json(appAll);     
 
             // client.close();

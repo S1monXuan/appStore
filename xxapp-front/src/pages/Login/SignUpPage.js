@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { useToken } from './auth/useToken';
 import axios from 'axios';
+import './SignUpPage.css';
 
 const SignUpPage = () => {
     const [token, setToken] = useToken();

@@ -1,7 +1,7 @@
 import React,{ useState} from "react";
 import { useParams } from "react-router-dom";
 import UserSideBar from "../../components/userPage/UserSideBar";
-
+import TopBar from "../../components/topBar";
 
 const PasswordUpdate = () => {
     const param = useParams();
@@ -53,29 +53,31 @@ const PasswordUpdate = () => {
 
     return(
         <>
-        <UserSideBar />
-        <div className="user-pwdupdate"> 
-        <h1>PASSWORD UPDATE</h1>
-        <label>
-            Current Password:
-            <input type='password' value={curpwd} onChange={(event) => setCurpwd(event.target.value)}/>
-        </label>
-        <label>
-            New Password:
-            <input type='password' value={newpwd} onChange={(event) => setNewpwd(event.target.value)}/>
-        </label>
-        <label>
-            Repeat New Password:
-            <input type='password' value={reppwd} onChange={(event) => setReppwd(event.target.value)}/>
-        </label>
-        <button onClick={() => UpdatePassword()}>
-            Update Password
-        </button>
-        <div>
-            {
-                <p>{curpwd};{newpwd};{reppwd}</p>
-            }
-            </div>    
+        <TopBar />
+        <div className="userPage">
+        <div className="user-sideBar-container">
+            <UserSideBar />
+        </div>
+        <div className="userInfo-main">
+            <div className="user-pwdupdate"> 
+            <h1>PASSWORD UPDATE</h1>
+            <label>
+                Current Password:
+                <input type='password' value={curpwd} onChange={(event) => setCurpwd(event.target.value)}/>
+            </label>
+            <label>
+                New Password:
+                <input type='password' value={newpwd} onChange={(event) => setNewpwd(event.target.value)}/>
+            </label>
+            <label>
+                Repeat New Password:
+                <input type='password' value={reppwd} onChange={(event) => setReppwd(event.target.value)}/>
+            </label>
+            <button onClick={() => UpdatePassword()}>
+                Update Password
+            </button>
+        </div>
+        </div>
         </div>
         </>
     )

@@ -1,0 +1,30 @@
+.HomePage-main{
+    margin: auto;
+}
+
+
+.HomePage-info{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid black;
+    
+}
+
+.sideBar, .appitems{
+    position: relative;
+    display: inline-block;
+}
+.sideBar{
+    /* border: 1pt solid black; */
+    width: 20%;
+    height: auto;
+    vertical-align: top
+}
+
+.appitems{
+    /* border: 1px solid red; */
+    width: 79%;
+    height: auto;
+    /* vertical-align: top */
+}

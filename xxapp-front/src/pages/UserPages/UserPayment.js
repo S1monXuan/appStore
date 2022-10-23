@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import UserSideBar from '../../components/userPage/UserSideBar';
 import GeneralPayment from "../../components/userPage/GeneralPayment";
 import axios from "axios";
+import TopBar from "../../components/topBar";
 
 const UserPayment = () => {
     const param = useParams();
@@ -21,8 +22,15 @@ const UserPayment = () => {
 
     return(
         <>
-        <UserSideBar />
-        <GeneralPayment user={user}/>
+        <TopBar />
+        <div className="userPage">
+        <div className="user-sideBar-container">
+            <UserSideBar />
+        </div>
+        <div className="userInfo-main">
+            <GeneralPayment user={user}/>
+        </div>
+        </div>
         </>
     )
 }

@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import TopBar from "../../components/topBar";
 import UserSideBar from "../../components/userPage/UserSideBar";
 
 
@@ -40,30 +41,29 @@ const AccountInfoUpdate = () => {
 
     return(
         <>
-        <UserSideBar />
-        <div className="user-pwdupdate"> 
-        <h1>UserAccount UPDATE</h1>
-        <label>
-            Name:
-            <input type='text' value={name} onChange={(event) => setName(event.target.value)}/>
-        </label>
-        <label>
-            Email:
-            <input type='text' value={email} onChange={(event) => setEmail(event.target.value)}/>
-        </label>
-        <a href={"../../user/" + userid}>
-            <button onClick={() => {UpdateAccInfo()}}>
-                Update Account Info
-            </button>
-        </a>
-        <div>
-            {
-                <p>{name};{email}</p>
-            }
-            {
-                <p>{user.name};{user.email}</p>
-            }
-            </div>    
+        <TopBar />
+        <div className="userPage">
+        <div className="user-sideBar-container">
+            <UserSideBar />
+        </div>
+        <div className="userInfo-main">
+            <div className="user-pwdupdate"> 
+            <h1>UserAccount UPDATE</h1>
+            <label>
+                Name:
+                <input type='text' value={name} onChange={(event) => setName(event.target.value)}/>
+            </label>
+            <label>
+                Email:
+                <input type='text' value={email} onChange={(event) => setEmail(event.target.value)}/>
+            </label>
+            <a href={"../../user/" + userid}>
+                <button onClick={() => {UpdateAccInfo()}}>
+                    Update Account Info
+                </button>
+            </a>
+            </div>
+        </div>
         </div>
         </>
     )

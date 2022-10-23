@@ -4,6 +4,7 @@ import fs from 'fs';
 export const appDownload = {
     path: '/details/:id/download',
     method: 'post',
+    contentType: false,
     handler: async(req, res) => {
         try{
             // const client = await MongoClient.connect('mongodb://127.0.0.1:27017/', { useNewUrlParser: true });

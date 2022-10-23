@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useToken } from '../pages/Login/auth/useToken';
 import { useNavigate } from 'react-router-dom';
-// import './topBar.css'
+import './topBar.css'
 
 const TopBar = () => {
     const navigate = useNavigate();
@@ -29,8 +29,8 @@ const TopBar = () => {
 
     return (
         <div className='top-bar-div'>
-            <div className='logo-word'> Logo Pos</div>
-            <div className='login-medium-spare'>af</div>
+            <div className='logo-word'>xx-webapp</div>
+            <div className='login-medium-spare'></div>
             <div className='login-right'
                 onClick={() => setLoginDetailDisplay(!loginDetailDisplay)}
             >
@@ -38,9 +38,9 @@ const TopBar = () => {
                 {
                     (loginDetailDisplay === true) ? 
                     <div className='login-detail'>
-                        <div className='userDetail' onClick={() => navigate(`/`)}> Back To Index </div>
+                        <div className='backIndex' onClick={() => navigate(`/`)}> Back To Index </div>
                         <div className='userDetail' onClick={() => navigate(`/user/${id}`)}> User Profile </div>
-                        <div className='Log Out' onClick={() => logOut()}> Log Out </div>
+                        <div className='LogOut' onClick={() => logOut()}> Log Out </div>
                     </div>
                     :
                     <></>

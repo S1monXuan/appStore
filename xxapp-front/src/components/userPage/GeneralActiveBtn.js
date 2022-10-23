@@ -7,7 +7,7 @@ const GeneralActiveBtn = ({user}) => {
     return(
         <div className="general-active-btn-container">
             <div>
-                <button className="general-active-edit-btn"> <Link to='accountinfoUpdate'>Edit</Link></button>
+                <button className="general-active-edit-btn" onClick={() => navigate(`/user/${[params.id]}/accountinfoUpdate`)}> Edit</button>
                 <button className="general-active-del-btn" onClick={() => navigate(`/user/${[params.id]}/deleteConfirm`)}>Del</button>
             </div>
         </div>

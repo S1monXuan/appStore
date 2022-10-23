@@ -1,16 +1,46 @@
-.top-bar-div {
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgb(0 0 0 / 12%) 0px 2px 6px 0px;
-    box-sizing: border-box;
-    left: 0px;
-    padding-left: calc(100vw - 100%);
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    z-index: 1150;
+.top-bar-div{
+    background-color: gainsboro;
+    position: relative;
+    z-index: 9;
 }
 
-.logo-word {
+.logo-word, .login-medium-spare, .login-right {
+    position: relative;
+    display: inline-block;
+}
+
+.logo-word{
+    width: 10%;
+    height: auto;
+
+}
+
+.login-medium-spare{
+    width: 70%;
+    height: auto;
+}
+
+.login-right{
+    width: 20%;
+    height: auto;
+}
+
+.login-detail{
+    background-color: aliceblue;
+    position: absolute;
+    width: 100%;
+    border: 1pt gray solid;
+}
+
+.LogOut{
+    border-top: 1pt dotted black;
+}
+
+.backIndex:hover, .userDetail:hover, .LogOut:hover{
+    background-color: beige;
+}
+
+/* .logo-word {
     align-items: center;
     color: rgb(38, 38, 38);
     display: flex;
@@ -47,4 +77,4 @@
     background-clip: content-box;
     border: solid 1px #ccc;
     border: solid 1px rgba(0,0,0,.3);
-}
+} */

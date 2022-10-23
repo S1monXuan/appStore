@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import TopBar from '../components/topBar';
 
+import './HomePage.css';
+
 const HomePage = () => {
     // let url = window.location.href;
     let params = useParams();
@@ -13,41 +15,52 @@ const HomePage = () => {
     //     const { token, email } = this.props.match.params;
     //     console.log("toke, email: ", token, email)
     //   };
-    const [env, setEnv] = useState('IOS');
+    const [env, setEnv] = useState('');
     const [type, setType] = useState('');
     const [searchVal, setSearchVal] = useState('');
+
+    // useEffect(() => {
+    //         if(env === ''){
+    //             setEnv('IOS');
+    //         } else {
+    //             setEnv(params.env)
+    //             setType(params.type)    
+    //         }
+    // }, [params.env, params.type])
+
     useEffect(() => {
-            if(env !== null){
-                setEnv(params.env)
-            }
-            setType(params.type)
-    }, [params.env, params.type, env])
+            setType(params.type)    
+    }, [params.type])
+
+    useEffect(() => {
+        if(params.env !== undefined){
+            setEnv(params.env)    
+        }
+    }, [params.env])
 
     useEffect(() => {
         const val = window.location.search.split('=')[1];
         setSearchVal(val);
     }, [<TopBar />])
 
-    const logOut = () => {
-        localStorage.removeItem('token');
-        navigate('/login');
-    }
+    // const logOut = () => {
+    //     localStorage.removeItem('token');
+    //     navigate('/login');
+    // }
 
     return (
     <div className='HomePage-main'>
         <TopBar />
+        <div className='HomePage-info'>
         <SideBar />
-        <button
+        {/* <button
             onClick={() => logOut()}
         >
             Log Out
-        </button>
-        <AppItems env={env} type={type}/>
-        <p>
-            test:
-            {env},{type}
-            {/* {console.log("con" + env + "; " + type)} */}
-        </p>
+        </button> */}
+        <AppItems env={env === undefined ? 'IOS' : env} type={type}/>
+        </div>
+        {/* <p>{env}, {type} {console.log({env})}</p> */}
     </div>
 )}
 

@@ -42,11 +42,12 @@ const LoginPage = () => {
         const response = await axios.post('/login',{
             emailValue: emailValue,
             passwordValue: passwordValue,
+        }).catch((error) => {
+            alert('Wrong password or username, please try again!');
         });
-
         const { token } = response.data;
         setToken(token);
-        navigate('/');
+        navigate('/');    
     }
 
     return(

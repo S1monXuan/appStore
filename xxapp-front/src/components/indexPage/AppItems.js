@@ -21,8 +21,10 @@ const AppItems = ({env, type}) => {
             let res = [];
             if( type ){
                 res = await fetch(`${type}/${variables}`);
-            } else {
+            } else if(env) {
                 res = await fetch(`${env}/${variables}`);
+            } else {
+                res = await fetch(`/category/IOS/${variables}`)
             }
             // console.log(res);
             const body = await res.json();
@@ -32,7 +34,7 @@ const AppItems = ({env, type}) => {
     }, [env, type])
 
     return (
-        <div>
+        <div className="appitems">
             {
                 appLists.length !== 0 ? 
                     appLists.map((list) => 
@@ -42,7 +44,7 @@ const AppItems = ({env, type}) => {
                     />
                     )
                 :
-                    <div> Does not have any app yet</div>
+                    <div className="search-null"> <h1 className="search-null-p">Sry, Does not have any app yet</h1> </div>
             }
         </div>
     )

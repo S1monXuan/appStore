@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import TopBar from '../../components/topBar';
+import UserSideBar from '../../components/userPage/UserSideBar';
 
 export const UserAccountDeleteConfirm = () => {
     const param = useParams();
@@ -22,7 +23,13 @@ export const UserAccountDeleteConfirm = () => {
     }
 
     return(
-        <div>
+        <>
+        <TopBar />
+        <div className="userPage">
+        <div className="user-sideBar-container">
+            <UserSideBar />
+        </div>
+        <div className="userInfo-main">
             <h1>Delete Account Confirm</h1>
             <p>Really want to delete account?</p>
             <button
@@ -36,5 +43,7 @@ export const UserAccountDeleteConfirm = () => {
                 No, I do it accidently
             </button>
         </div>
+        </div>
+        </>
     )
 }

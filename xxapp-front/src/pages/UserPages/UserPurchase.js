@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import GeneralPurchase from "../../components/userPage/GeneralPurchase";
 import UserSideBar from "../../components/userPage/UserSideBar";
+import TopBar from "../../components/topBar";
 
 const UserPurchase = () => {
     const param = useParams();
@@ -20,8 +21,15 @@ const UserPurchase = () => {
 
     return(
         <>
-        <UserSideBar />
-        <GeneralPurchase user={user}/>
+        <TopBar />
+        <div className="userPage">
+        <div className="user-sideBar-container">
+            <UserSideBar />
+        </div>
+        <div className="userInfo-main">
+            <GeneralPurchase user={user}/>
+        </div>
+        </div>
         </>
     )
 }

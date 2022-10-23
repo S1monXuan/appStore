@@ -11,7 +11,7 @@ export const forgotPasswordRoute = {
         const db = getDbConnection('xx-webapp');
         const passwordResetCode = uuid();
         // console.log(passwordResetCode);
-        console.log(await db.collection('userList').findOne({email: email}));
+        // console.log(await db.collection('userList').findOne({email: email}));
         const result  = await db.collection('userList').updateOne({ email: email }, { $set: { passwordResetCode } });
         // console.log(result);
 

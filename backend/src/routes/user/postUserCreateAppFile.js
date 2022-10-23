@@ -21,7 +21,7 @@ export const postUserCreateAppFile = {
             }
             //upload app/ file into folder
             const uploadFiles =  req.body;
-            console.log("1" + req.body);
+            // console.log("1" + req.body);
             // const form = new formidable.IncomingForm();
             
             // form.parse(req, function(err, fields, files){

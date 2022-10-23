@@ -40,7 +40,7 @@ export const postCreateApp = {
             // console.log(newUpdated);
     
             const updateduserDetail = await db.collection('userList').findOne({_id: userid});
-            console.log(updateduserDetail)
+            // console.log(updateduserDetail)
             res.status(200).json({appId: fileId});
 
             // client.close();

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom"
-
+import TopBar from "../../components/topBar";
+import UserSideBar from "../../components/userPage/UserSideBar";
 
 export const UploadAppFile = () => {
     const params = useParams();
@@ -29,6 +30,7 @@ export const UploadAppFile = () => {
         const file = e.target.files[0];
         console.log(file);
         setNewapp(file);
+        console.log(newapp);
     }
 
     const uploadFile = () => {
@@ -41,11 +43,19 @@ export const UploadAppFile = () => {
                 setProgress(progress);
             }
         }).then(res => {
-            console.log(res);
-        }).catch(err => console.log(err))}   
+            console.log({"success": res});
+            alert("upload success");
+            navigate('/category/IOS');
+        }).catch(err => console.log({"error": err}))}   
 
     return(
-        <div>
+        <>
+        <TopBar />
+        <div className="userPage">
+        <div className="user-sideBar-container">
+            <UserSideBar />
+        </div>
+        <div className="userInfo-main">
             <h1>OverView of your app</h1>
             <div>
             <div>
@@ -78,10 +88,12 @@ export const UploadAppFile = () => {
             </input>
             <button
                 disabled={!newapp}
-                onClick={uploadFile}
+                onClick={() => uploadFile()}
             >
                 Submit
             </button>
         </div>
+        </div>
+        </>
     )
 }

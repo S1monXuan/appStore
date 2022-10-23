@@ -9,6 +9,8 @@ import { useToken } from "../Login/auth/useToken";
 import { useUser } from "../Login/auth/useUser";
 import TopBar from "../../components/topBar";
 
+// import './UserIndex.css'
+
 
 const UserIndex = () => {
     
@@ -41,15 +43,19 @@ const UserIndex = () => {
     }, [])
 
     return(
-        <>
+        <div>
         <TopBar />
-        <UserSideBar />
-        {!user.isVerified && <div className="fail">You need to verify your email</div>}
-        {showSuccessMessage && <div className="success">Successfully saved user data!</div>}
-        {showErrorMessage && <div className="fail">Uh oh... something went wrong and we couldn't save changes</div>}
-        <GeneralInfo user={user}/>
+            <div className="userPage">
+                <UserSideBar />
+                <div className="userInfo-main">
+                    {!user.isVerified && <div className="fail">You need to verify your email</div>}
+                    {showSuccessMessage && <div className="success">Successfully saved user data!</div>}
+                    {showErrorMessage && <div className="fail">Uh oh... something went wrong and we couldn't save changes</div>}
+                    <GeneralInfo user={user}/>
+                </div>
+            </div>
         {/* <div>{console.log(user)}</div> */}
-        </>
+        </div>
     )
 }
 
