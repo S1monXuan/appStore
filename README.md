@@ -1,6 +1,8 @@
 # What is it
 It is a full stack web app application using react and node js. It use mongodb atlas as database. Sendgrid is used to send message.
 
+It is been puhlished on AWS <a href="ec2-3-92-231-110.compute-1.amazonaws.com"> xxweb-app </a>
+
 # How it works
     To use the application, you must register an account.
 ## for web page
