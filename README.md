@@ -1,3 +1,6 @@
+# Attention
+Due to some silly action, my sendgrid account has been deactivated. The email function is temporary did not working. User can still login and register but would not receive any eamil untill further notice. Sorry for the inconvenient. 
+
 # What is it
 It is a full stack web app application using react and node js. It use mongodb atlas as database. Sendgrid is used to send message.
 
