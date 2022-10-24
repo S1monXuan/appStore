@@ -6,7 +6,7 @@ export const PleaseVerifyEmailPage = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            navigate('/');
+            navigate('/login');
         }, 3000);
     }, [navigate]);
 

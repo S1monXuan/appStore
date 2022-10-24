@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import {v4 as uuid} from 'uuid';
 import { sendEmail } from "../util/sendEmail";
+import ip from 'ip';
 
 
 export const SignUpPage = {
@@ -40,7 +41,7 @@ export const SignUpPage = {
         })
 
         // console.log('before Try' + email)
-
+        // console.log(ip.address());
         try {
             await sendEmail({
                 to: email,
@@ -48,7 +49,7 @@ export const SignUpPage = {
                 subject: 'Please verify your email',
                 text: `
                     Thanks for signing up! To verify your email, click here:
-                    http://localhost:3000/verify-email/${verificationString}
+                    http://${ip.address()}:8080/verify-email/${verificationString}
                 `,
             });
         // console.log('after Try' + {verificationString});

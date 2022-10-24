@@ -1,6 +1,7 @@
 import { getDbConnection } from "../db";
 import {v4 as uuid} from 'uuid';
 import { sendEmail } from "../util/sendEmail";
+import ip from 'ip';
 
 export const forgotPasswordRoute = {
     path: '/forgot-password/:email',
@@ -25,7 +26,7 @@ export const forgotPasswordRoute = {
                     subject: 'Password Reset',
                     text: `
                         To reset your password, click this link:
-                        http://localhost:3000/reset-password/${passwordResetCode}
+                        http://${ip.address()}:8080/reset-password/${passwordResetCode}
                     `
                 });
             } catch (e) {
